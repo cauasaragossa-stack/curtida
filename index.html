@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Curtida</title>
+    <title>Portal da Agronomia</title>
     <style>
-        /* Estilização da página */
+        /* Estilização da página com tema agrícola */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -13,68 +13,95 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f9;
+            background-color: #e8f5e9; /* Verde bem claro */
         }
 
         .card {
             background-color: white;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             text-align: center;
-            max-width: 300px;
+            max-width: 350px;
+            border-top: 6px solid #2e7d32; /* Detalhe em verde escuro */
+        }
+
+        h2 {
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         /* Estilo do Botão */
         .like-btn {
-            background-color: #e74c3c;
+            background-color: #2e7d32;
             color: white;
             border: none;
             padding: 12px 24px;
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: bold;
             border-radius: 25px;
             cursor: pointer;
             transition: transform 0.2s, background-color 0.2s;
+            margin-top: 15px;
         }
 
         .like-btn:hover {
-            background-color: #c0392b;
+            background-color: #1b5e20;
             transform: scale(1.05);
         }
 
-        .like-btn:active {
-            transform: scale(0.95);
+        /* Estilo quando o botão estiver desativado */
+        .like-btn:disabled {
+            background-color: #a5d6a7;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        .count {
+        /* Mensagem de agradecimento */
+        .mensagem {
             margin-top: 15px;
+            font-weight: bold;
+            color: #2e7d32;
             font-size: 16px;
-            color: #555;
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h2>Deixe seu Like! ❤️</h2>
+        <h2>Agronomia em Foco 🌱🌾</h2>
+        <p>Apoie a inovação no campo e o desenvolvimento sustentável da agricultura!</p>
+
         <button class="like-btn" id="btnCurtir">
-            Curtir 👍
+            Curtir 💚
         </button>
-        <div class="count">
-            Total de curtidas: <strong id="contador">0</strong>
-        </div>
+
+        <div class="mensagem" id="mensagemAgradecimento"></div>
     </div>
 
     <script>
-        // Lógica do contador em JavaScript
-        let curtidas = 0;
+        let jaCurtiu = false;
 
         const botao = document.getElementById('btnCurtir');
-        const elementoContador = document.getElementById('contador');
+        const mensagem = document.getElementById('mensagemAgradecimento');
 
         botao.addEventListener('click', () => {
-            curtidas++;
-            elementoContador.textContent = curtidas;
+            if (!jaCurtiu) {
+                jaCurtiu = true;
+                
+                // Muda o texto do botão e desativa para não clicar de novo
+                botao.textContent = "Curtido! ✔️";
+                botao.disabled = true;
+
+                // Mostra a mensagem de agradecimento
+                mensagem.textContent = "Obrigado pelo seu apoio! 🚜✨";
+            }
         });
     </script>
 
