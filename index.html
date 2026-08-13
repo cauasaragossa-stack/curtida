@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Curtida</title>
+    <style>
+        /* Estilização da página */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+        }
+
+        /* Estilo do Botão */
+        .like-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .like-btn:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .like-btn:active {
+            transform: scale(0.95);
+        }
+
+        .count {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Deixe seu Like! ❤️</h2>
+        <button class="like-btn" id="btnCurtir">
+            Curtir 👍
+        </button>
+        <div class="count">
+            Total de curtidas: <strong id="contador">0</strong>
+        </div>
+    </div>
+
+    <script>
+        // Lógica do contador em JavaScript
+        let curtidas = 0;
+
+        const botao = document.getElementById('btnCurtir');
+        const elementoContador = document.getElementById('contador');
+
+        botao.addEventListener('click', () => {
+            curtidas++;
+            elementoContador.textContent = curtidas;
+        });
+    </script>
+
+</body>
+</html>
