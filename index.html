@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal da Agronomia</title>
+    <title>Agronomia - Curtida</title>
     <style>
-        /* Estilização da página com tema agrícola */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -13,7 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #e8f5e9; /* Verde bem claro */
+            background-color: #e8f5e9; /* Fundo Verde Agro */
         }
 
         .card {
@@ -23,21 +22,12 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             text-align: center;
             max-width: 350px;
-            border-top: 6px solid #2e7d32; /* Detalhe em verde escuro */
+            border-top: 6px solid #2e7d32;
         }
 
-        h2 {
-            color: #1b5e20;
-            margin-bottom: 10px;
-        }
+        h2 { color: #1b5e20; }
+        p { color: #555; font-size: 14px; }
 
-        p {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        /* Estilo do Botão */
         .like-btn {
             background-color: #2e7d32;
             color: white;
@@ -47,23 +37,15 @@
             font-weight: bold;
             border-radius: 25px;
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
             margin-top: 15px;
         }
 
-        .like-btn:hover {
-            background-color: #1b5e20;
-            transform: scale(1.05);
-        }
-
-        /* Estilo quando o botão estiver desativado */
+        /* Quando o botão é desativado */
         .like-btn:disabled {
             background-color: #a5d6a7;
             cursor: not-allowed;
-            transform: none;
         }
 
-        /* Mensagem de agradecimento */
         .mensagem {
             margin-top: 15px;
             font-weight: bold;
@@ -76,7 +58,7 @@
 
     <div class="card">
         <h2>Agronomia em Foco 🌱🌾</h2>
-        <p>Apoie a inovação no campo e o desenvolvimento sustentável da agricultura!</p>
+        <p>Apoie o desenvolvimento sustentável no campo!</p>
 
         <button class="like-btn" id="btnCurtir">
             Curtir 💚
@@ -95,7 +77,7 @@
             if (!jaCurtiu) {
                 jaCurtiu = true;
                 
-                // Muda o texto do botão e desativa para não clicar de novo
+                // Trava o botão e muda o texto
                 botao.textContent = "Curtido! ✔️";
                 botao.disabled = true;
 
@@ -106,4 +88,4 @@
     </script>
 
 </body>
-</html>.
+</html>
