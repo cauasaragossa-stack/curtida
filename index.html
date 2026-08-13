@@ -3,88 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agronomia - Curtida</title>
+    <title>Galeria da Agronomia</title>
     <style>
+        /* Estilos gerais */
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #f0f7f4;
             margin: 0;
-            background-color: #e8f5e9; /* Fundo Verde Agro */
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        h1 {
+            color: #1b5e20;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Container que segura todos os cartões */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            max-width: 1000px;
+        }
+
+        /* Estilo do cartão individual */
         .card {
             background-color: white;
-            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            max-width: 350px;
-            border-top: 6px solid #2e7d32;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 20px;
+            border-top: 5px solid #2e7d32;
         }
 
-        h2 { color: #1b5e20; }
-        p { color: #555; font-size: 14px; }
+        /* Estilo das imagens */
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
 
+        .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #2e7d32;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Estilo do Botão */
         .like-btn {
             background-color: #2e7d32;
             color: white;
             border: none;
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 10px 20px;
+            font-size: 15px;
             font-weight: bold;
-            border-radius: 25px;
+            border-radius: 20px;
             cursor: pointer;
-            margin-top: 15px;
+            transition: background-color 0.2s, transform 0.2s;
+            margin-top: 10px;
         }
 
-        /* Quando o botão é desativado */
+        .like-btn:hover {
+            background-color: #1b5e20;
+            transform: scale(1.05);
+        }
+
+        /* Botão após ser clicado */
         .like-btn:disabled {
             background-color: #a5d6a7;
             cursor: not-allowed;
+            transform: none;
         }
 
+        /* Mensagem de agradecimento */
         .mensagem {
-            margin-top: 15px;
+            margin-top: 10px;
             font-weight: bold;
             color: #2e7d32;
-            font-size: 16px;
+            font-size: 14px;
+            height: 20px; /* Para manter a estrutura alinhada */
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h2>Agronomia em Foco 🌱🌾</h2>
-        <p>Apoie o desenvolvimento sustentável no campo!</p>
+    <h1>Portal Agronomia em Ação 🌱</h1>
 
-        <button class="like-btn" id="btnCurtir">
-            Curtir 💚
-        </button>
+    <div class="container">
 
-        <div class="mensagem" id="mensagemAgradecimento"></div>
+        <div class="card">
+            <img src="http://googleusercontent.com/image_generation_content/0" alt="Tecnologia no Campo">
+            <div class="card-content">
+                <h3>Tecnologia no Campo 🚜</h3>
+                <p>O uso de tratores autônomos e drones revolucionou o plantio de precisão nas lavouras.</p>
+                <button class="like-btn" onclick="curtir(this, 'msg1')">Curtir 💚</button>
+                <div class="mensagem" id="msg1"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=500" alt="Cultivo Sustentável">
+            <div class="card-content">
+                <h3>Sustentabilidade 🌾</h3>
+                <p>Práticas agrícolas conscientes garantem a proteção do solo e o uso racional da água.</p>
+                <button class="like-btn" onclick="curtir(this, 'msg2')">Curtir 💚</button>
+                <div class="mensagem" id="msg2"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=500" alt="Mudas e Solo">
+            <div class="card-content">
+                <h3>Manejo de Solo 🌱</h3>
+                <p>Nutrir a terra é a base para colheitas fartas e alimentos mais saudáveis para todos.</p>
+                <button class="like-btn" onclick="curtir(this, 'msg3')">Curtir 💚</button>
+                <div class="mensagem" id="msg3"></div>
+            </div>
+        </div>
+
     </div>
 
     <script>
-        let jaCurtiu = false;
+        function curtir(botao, idMensagem) {
+            // Desativa o botão e altera o texto
+            botao.disabled = true;
+            botao.textContent = "Curtido! ✔️";
 
-        const botao = document.getElementById('btnCurtir');
-        const mensagem = document.getElementById('mensagemAgradecimento');
-
-        botao.addEventListener('click', () => {
-            if (!jaCurtiu) {
-                jaCurtiu = true;
-                
-                // Trava o botão e muda o texto
-                botao.textContent = "Curtido! ✔️";
-                botao.disabled = true;
-
-                // Mostra a mensagem de agradecimento
-                mensagem.textContent = "Obrigado pelo seu apoio! 🚜✨";
-            }
-        });
+            // Exibe a mensagem de agradecimento específica daquele cartão
+            const mensagemDiv = document.getElementById(idMensagem);
+            mensagemDiv.textContent = "Obrigado pelo seu apoio! ✨";
+        }
     </script>
 
 </body>
